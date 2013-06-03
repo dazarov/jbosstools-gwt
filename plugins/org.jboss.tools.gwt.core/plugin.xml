@@ -68,4 +68,35 @@
          </facet>
       </supported>
    </extension>
+      <extension
+         point="org.eclipse.debug.ui.launchShortcuts">
+      <shortcut
+            class="org.jboss.tools.gwt.core.GWTDevModeLaunchShortcut"
+            description=""
+            helpContextId=""
+            id="org.jboss.tools.gwt.core.GWTDevModeLaunchShortcut"
+            label="GWT Development Mode"
+            modes="run, debug">
+         <contextualLaunch>
+           <enablement>
+             <with variable="selection">
+               <count value="1"/>
+                <iterate>
+          			<adapt type="org.eclipse.jdt.core.IJavaElement">
+          				<test property="org.eclipse.jdt.core.hasTypeOnClasspath" value="com.google.gwt.dev.DevMode"/>
+          			</adapt>
+                </iterate>
+               </with>
+           </enablement>
+  		 </contextualLaunch>
+         <description
+               description="%RunJavaLaunchShortcut.description"
+               mode="run">
+         </description>
+         <description
+               description="%DebugJavaLaunchShortcut.description"
+               mode="debug">
+         </description>
+      </shortcut>
+   </extension>
 </plugin>
